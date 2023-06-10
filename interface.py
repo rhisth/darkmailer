@@ -20,7 +20,7 @@ class Ui_MainWindow(object):
 "QPushButton:hover {\n"
 "background-color: rgb(60, 73, 94);\n"
 "}\n"
-"QTextEdit {\n"
+"QPlainTextEdit {\n"
 "color: rgb(255, 255, 255);\n"
 "background-color: rgb(29, 36, 47);\n"
 "border-radius: 15px;\n"
