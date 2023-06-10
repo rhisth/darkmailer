@@ -182,11 +182,6 @@ class Ui_MainWindow(object):
         self.pushButton.setText(_translate("MainWindow", "Войти в почту"))
         self.sendButton.setText(_translate("MainWindow", "Разослать письма"))
         self.text2.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\">Текст</p></body></html>"))
-        self.textEdit.setHtml(_translate("MainWindow", "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
-"<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
-"p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:\'MS Shell Dlg 2\'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"))
         self.text3.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\">Логи</p></body></html>"))
         self.text1.setText(_translate("MainWindow", "<html><head/><body><p align=\"center\">Почты</p></body></html>"))
         self.mailsSaveButton.setText(_translate("MainWindow", "Сохранить файл"))
