@@ -94,7 +94,7 @@ class App(QtWidgets.QMainWindow, interface.Ui_MainWindow):
             self.mailsEdit.clear()
             f = codecs.open(file[0], "r", "utf-8")
             text = f.read()
-            self.mailsEdit.append(text)
+            self.mailsEdit.appendPlainText(text)
             f.close()
 
     def savemails(self):
@@ -110,7 +110,7 @@ class App(QtWidgets.QMainWindow, interface.Ui_MainWindow):
             self.textEdit.clear()
             f = codecs.open(file[0], "r", "utf-8")
             text = f.read()
-            self.textEdit.append(text)
+            self.textEdit.appendPlainText(text)
             f.close()
 
     def savetext(self):
