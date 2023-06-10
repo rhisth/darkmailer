@@ -1,6 +1,7 @@
 # darkmailer
 
 программа для рассылки писем на pyqt6<br>
+текст поддерживает только html разметку, тоесть надо писать `<br>` на конце каждой строки
 
 ![image](https://github.com/rhisth/darkmailer/assets/96009471/b95e465a-09cc-4209-b712-d81537f8e41c)
 
