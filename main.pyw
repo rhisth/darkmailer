@@ -2,6 +2,7 @@ import os
 import sys
 import codecs
 import smtplib
+from datetime import datetime, date
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
@@ -10,6 +11,9 @@ import interface
 
 ready = 0
 input = []
+
+if not os.path.exists("logs"):
+    os.mkdir("logs")
 
 class MailThread(QtCore.QThread):
     def __init__(self, window, parent=None):
@@ -32,13 +36,20 @@ class MailThread(QtCore.QThread):
                 message["From"] = input[2]
                 message["To"] = mail
                 message.attach(MIMEText(text, "html"))
-            except:
+            except Exception as ex:
                 self.window.logsBrowser.append(f"Ошибка при подключении к {smtp}:{port}")
+                with open(f"logs/{date.today()}.txt", "a") as f:
+                    f.write(f"{datetime.now()} - {ex}\n")
+                self.window.sendButton.setEnabled(False)
+                self.window.pushButton.setEnabled(False)
+                return
             try:
                 server.sendmail(input[2], mail, message.as_string())
                 self.window.logsBrowser.append(f"Отправлено на адрес {mail}")
-            except:
+            except Exception as ex:
                 self.window.logsBrowser.append(f"Ошибка при отправлении на адрес {mail}")
+                with open(f"logs/{date.today()}.txt", "a") as f:
+                    f.write(f"{datetime.now()} - {ex}\n")
             server.quit()
         self.window.sendButton.setEnabled(True)
         self.window.pushButton.setEnabled(True)
@@ -61,14 +72,20 @@ class LoginThread(QtCore.QThread):
                 server = smtplib.SMTP(smtp, int(port))
                 self.window.logsBrowser.append(f"Подключено к {smtp}:{port}")
                 server.starttls()
-            except:
+            except Exception as ex:
                 self.window.logsBrowser.append(f"Ошибка при подключении к {smtp}:{port}")
+                with open(f"logs/{date.today()}.txt", "a") as f:
+                    f.write(f"{datetime.now()} - {ex}\n")
+                self.window.pushButton.setEnabled(True)
                 return
             try:
                 server.login(mail, password)
                 self.window.logsBrowser.append(f"Выполнен вход в почту {mail}")
-            except:
+            except Exception as ex:
                 self.window.logsBrowser.append(f"Ошибка при попытке входа в почту {mail}")
+                with open(f"logs/{date.today()}.txt", "a") as f:
+                    f.write(f"{datetime.now()} - {ex}\n")
+                self.window.pushButton.setEnabled(True)
                 return
             server.quit()
             ready = 1
